@@ -18,8 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TextInput" >
-        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <activity
             android:name=".MethodActivity"
             android:label="@string/title_activity_method"
@@ -29,15 +32,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="spizer.com.cryptor.MainActivity" />
         </activity>
-        
-        <provider
-            android:authorities="spizer.com.cryptor.TextProvider"
-            android:name=".TextProvider"
-            android:exported="false" />
-
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+        <activity android:name=".OutputActivity" >
+        </activity>
     </application>
 
 </manifest>

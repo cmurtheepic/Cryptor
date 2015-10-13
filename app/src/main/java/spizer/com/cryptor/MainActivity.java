@@ -1,32 +1,60 @@
 package spizer.com.cryptor;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.View;
-import android.widget.ImageView;
-
-import org.w3c.dom.Text;
+import android.view.KeyEvent;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextDatabase textDatabase = new TextDatabase();
+
+    TextView input;
+
+    private String text1;
+
+    public String getText1() {
+        return text1;
+    }
+    public void setText1(String text) {
+        this.text1 = text1;
+    }
+
+    private int _TextData_Id=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DBOpenHelper helper = new DBOpenHelper(this);
-        SQLiteDatabase database = helper.getWritableDatabase();
+        input = (TextView) findViewById(R.id.editText);
+
+        final TextData textData = new TextData();
+
+        _TextData_Id=0;
+
+        input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                TextDatabase repo = new TextDatabase();
+
+                Intent intent = getIntent();
+                _TextData_Id =intent.getIntExtra("textData_Id", 0);
+
+                setText1(input.toString());
+                textData.txt=input.getText().toString();
+
+                _TextData_Id = repo.insert(textData);
+            return false;
+            }
+        });
+
     }
 
-    /** called when the user clicks the start button **/
-    public void TextInput (View view) {
-        Intent TextIn = new Intent(this, TextInput.class);
-        startActivity(TextIn);
+    private void cont() {
+        Intent cont = new Intent(this, MethodActivity.class);
+        startActivity(cont);
     }
 }

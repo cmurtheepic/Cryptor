@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Cryptor</string>
     <string name="title_activity_method">Cryptor</string>
+    <string name="button_continue">CONTINUE</string>
+    <string name="Output_Text_view1">Here is the encrypted text</string>
+    <string name="Output_Before">Before</string>
+    <string name="Output_After">After</string>
+    <string name="Main_Text_view1">Please enter the text to be encrypted here</string>
 </resources>
